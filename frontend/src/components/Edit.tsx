@@ -44,7 +44,7 @@ function Edit() {
     const fetchImage = async () => {
       try {
         if (data && data.imageUrl) {
-          const response = await fetch(`${baseUrl}uploads/${data.imageUrl}`)
+          const response = await fetch(`${baseUrl}/uploads/${data.imageUrl}`)
           if (!response.ok) {
             throw new Error("Failed to fetch image")
           }

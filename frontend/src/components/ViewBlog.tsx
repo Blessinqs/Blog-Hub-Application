@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import placeholder from "../../public/placeholder-image.png"
-
-const baseUrl = "http://localhost:3000/uploads"
+import { baseUrl } from "./apis"
 
 const ViewBlog = () => {
   const { id } = useParams<{ id: string }>()
@@ -12,11 +11,10 @@ const ViewBlog = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/${id}`)
+        const response = await fetch(`${baseUrl}/${id}`)
         if (!response.ok) {
           throw new Error("Failed to fetch data")
         }
-
         const data = await response.json()
         setData(data)
       } catch (err) {
@@ -31,7 +29,7 @@ const ViewBlog = () => {
     const fetchImage = async () => {
       try {
         if (data && data.imageUrl) {
-          const response = await fetch(`${baseUrl}/${data.imageUrl}`)
+          const response = await fetch(`${baseUrl}/uploads/${data.imageUrl}`)
           if (!response.ok) {
             throw new Error("Failed to fetch image")
           }
@@ -64,7 +62,7 @@ const ViewBlog = () => {
         </div>
         <div className=" flex items-center mb-4">
         </div>
-        <img src={image || ""} alt={data?.title} className="mb-4" />
+        <img src={`${baseUrl}/${data.imageUrl}`} alt={data?.title} className="mb-4" />
         <div className="prose">{data?.content}</div>
       </div>
     </div>

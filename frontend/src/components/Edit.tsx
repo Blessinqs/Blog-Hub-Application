@@ -3,7 +3,8 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import Toast from "./Toast"
 import placeholder from "../../public/placeholder-image.png"
-const baseUrl = "http://localhost:3000/uploads"
+import { baseUrl } from "./apis"
+//const baseUrl = "http://localhost:3000/uploads"
 
 function Edit() {
   const { id } = useParams<{ id: string }>()
@@ -20,7 +21,7 @@ function Edit() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/${id}`)
+        const response = await fetch(`${baseUrl}/${id}`)
         if (!response.ok) {
           throw new Error("Failed to fetch data")
         }
@@ -43,7 +44,7 @@ function Edit() {
     const fetchImage = async () => {
       try {
         if (data && data.imageUrl) {
-          const response = await fetch(`${baseUrl}/${data.imageUrl}`)
+          const response = await fetch(`${baseUrl}uploads/${data.imageUrl}`)
           if (!response.ok) {
             throw new Error("Failed to fetch image")
           }
@@ -80,7 +81,7 @@ function Edit() {
       }
       console.log(formData)
 
-      await axios.put("http://localhost:3000/" + id, formData, {
+      await axios.put(`${baseUrl}/${id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

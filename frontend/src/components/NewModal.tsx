@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-
+import { baseUrl } from "./apis"
 interface PostModalProps {
   closeModal: () => void
 }
@@ -35,7 +35,7 @@ const NewModal: React.FC<PostModalProps> = ({ closeModal }) => {
 
     console.log(e.target.image.files[0])
     try {
-      const response = await axios.post("http://localhost:3000/", formData, {
+      const response = await axios.post(`${baseUrl}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

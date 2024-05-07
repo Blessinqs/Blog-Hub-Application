@@ -18,7 +18,7 @@ const Post: React.FC = () => {
     formData.append("imageUrl", e.currentTarget.image.files[0])
 
     try {
-      const response = await axios.post("http://localhost:3000/", formData, {
+      const response = await axios.post("", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

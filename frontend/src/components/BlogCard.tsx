@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import placeholder from "../../public/placeholder-image.png"
 import ConfirmModal from "./ConfirmModal"
-
+import { baseUrl } from "./apis"
 
 interface BlogCardProps {
   title: string
@@ -11,7 +11,7 @@ interface BlogCardProps {
   id: number
 }
 
-const baseUrl = "http://localhost:3000/uploads"
+//const baseUrl = "http://localhost:3000/uploads"
 
 const BlogCard: React.FC<BlogCardProps> = ({
   title,
@@ -27,7 +27,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
   useEffect(() => {
     const fetchImage = async () => {
       try {
-        const response = await fetch(`${baseUrl}/${imageUrl}`)
+        const response = await fetch(`${baseUrl}uploads/${imageUrl}`)
         if (!response.ok) {
           throw new Error("Failed to fetch image")
         }
@@ -62,7 +62,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
 
   const confirmedDelete = async () => {
     try {
-      await fetch(`http://localhost:3000/${id}`, {
+      await fetch(`${baseUrl}/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

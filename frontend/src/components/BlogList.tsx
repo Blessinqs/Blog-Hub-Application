@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import PostBlog from "./PostBlog"
 import BlogCard from "./BlogCard"
 import HeroSection from "./HeroSection"
-
+import { baseUrl } from "./apis"
 function BlogList() {
   const [data, setData] = useState<any>(null)
   
@@ -10,7 +10,7 @@ function BlogList() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/")
+        const response = await fetch(`${baseUrl}`)
         if (!response.ok) {
           throw new Error("Failed to fetch data")
         }

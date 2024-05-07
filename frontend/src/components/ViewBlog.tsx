@@ -62,7 +62,7 @@ const ViewBlog = () => {
         </div>
         <div className=" flex items-center mb-4">
         </div>
-        <img src={`${baseUrl}/${data.imageUrl}`} alt={data?.title} className="mb-4" />
+        <img src={`${image}`} alt={data?.title} className="mb-4" />
         <div className="prose">{data?.content}</div>
       </div>
     </div>

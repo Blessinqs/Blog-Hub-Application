@@ -27,7 +27,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
   useEffect(() => {
     const fetchImage = async () => {
       try {
-        const response = await fetch(`${baseUrl}uploads/${imageUrl}`)
+        const response = await fetch(`${baseUrl}/uploads/${imageUrl}`)
         if (!response.ok) {
           throw new Error("Failed to fetch image")
         }
@@ -96,7 +96,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
           <div className="cursor-pointer">
             <Link to={`/view/${id}`}>
               <img
-                src={image}
+                src={`${image}`}
                 className="h-48 w-full rounded-t shadow cursor-pointer"
                 alt="Blog Image"
               />

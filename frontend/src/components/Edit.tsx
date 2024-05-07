@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import Toast from "./Toast"
 import placeholder from "../../public/placeholder-image.png"
 import { baseUrl } from "./apis"
+import Navbar from "./Navbar"
 //const baseUrl = "http://localhost:3000/uploads"
 
 function Edit() {
@@ -121,6 +122,8 @@ function Edit() {
     setShowConfirmModal(false)
   }
   return (
+    <>
+    <Navbar />
     <div className="w-screen ">
       {showToast && (
         <Toast
@@ -251,6 +254,7 @@ function Edit() {
         </form>
       </div>
     </div>
+    </>
   )
 }
 

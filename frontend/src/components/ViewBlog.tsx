@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import placeholder from "../../public/placeholder-image.png"
 import { baseUrl } from "./apis"
+import Navbar from "./Navbar"
 
 const ViewBlog = () => {
   const { id } = useParams<{ id: string }>()
@@ -55,6 +56,8 @@ const ViewBlog = () => {
   }, [data])
 
   return (
+    <>
+    <Navbar />
     <div className="min-h-screen">
       <div className="max-w-5xl mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-4">{data?.title}</h1>
@@ -66,6 +69,7 @@ const ViewBlog = () => {
         <div className="prose">{data?.content}</div>
       </div>
     </div>
+    </>
   )
 }
 

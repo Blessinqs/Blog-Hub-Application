@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import PostBlog from "./PostBlog"
 import BlogCard from "./BlogCard"
 import HeroSection from "./HeroSection"
+import Navbar from "./Navbar"
 import { baseUrl } from "./apis"
 function BlogList() {
   const [data, setData] = useState<any>(null)
@@ -40,9 +41,10 @@ function BlogList() {
 
   return (
     <div>
+      <Navbar />
+
       <HeroSection />
       <PostBlog />
-    
         <main
           className="w-screen flex justify-center flex-wrap items-center"
           id="main"

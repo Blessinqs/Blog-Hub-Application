@@ -5,11 +5,8 @@ function PostBlog() {
     <div className="m-10">
       <Link to="/post" >
         <a
-          className="bg-white  text-white   "
-          onClick={() => {
-          }}
+          className="bg-white text-white"
         >
-          
         </a>
       </Link>
     </div>

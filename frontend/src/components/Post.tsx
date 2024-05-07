@@ -1,13 +1,13 @@
 import React, { useState } from "react"
 import axios from "axios"
 import Toast from "./Toast" 
-
+import Navbar from "./Navbar"
+import { baseUrl } from "./apis"
 
 const Post: React.FC = () => {
   const [imagePreview, setImagePreview] = useState<string | null>(null)
   const [showToast, setShowToast] = useState<boolean>(false)
   const [toastMessage, setToastMessage] = useState<string>("")
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const id = Math.floor(Math.random() * 1000)
@@ -18,7 +18,7 @@ const Post: React.FC = () => {
     formData.append("imageUrl", e.currentTarget.image.files[0])
 
     try {
-      const response = await axios.post("", formData, {
+      const response = await axios.post(`${baseUrl}/`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -51,6 +51,8 @@ const Post: React.FC = () => {
 
 
   return (
+    <>
+    <Navbar />
     <div className="w-screen ">
       {showToast && (
         <Toast
@@ -130,6 +132,7 @@ const Post: React.FC = () => {
         </form>
       </div>
     </div>
+    </>
   )
 }
 
